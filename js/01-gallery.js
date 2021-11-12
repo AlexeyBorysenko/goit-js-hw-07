@@ -19,8 +19,20 @@ const galleryItemHtml = galleryItems.map((galItem) =>
 galleryDiv.insertAdjacentHTML("beforeend", galleryItemHtml);
 
 // addEventListener on div.gallery with Delegation
-const galleryItem = document.querySelector(".gallery");
+const galleryItem = document.querySelector(".gallery",
 
+ {
+        onShow: (galleryItem) => {
+            window.addEventListener("keydown", onEscPress);
+            
+        },
+
+        onClose: (galleryItem) => {
+            window.removeEventListener("keydown", onEscPress);
+           
+        }
+ }
+ );
 galleryItem.addEventListener("click", (event) => {
     event.preventDefault();
 
